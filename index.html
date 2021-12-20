@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<title>Glassmorphism</title>
+	</head>
+	<body>
+		<img src="images/img2.jpg" alt="" class="background" />
+		<div class="title">GLASS</div>
+		<div class="card"></div>
+
+		<script>
+			let card = document.querySelector('.card')
+			card.style.left = sessionStorage.getItem('offsetX') + 'px'
+			card.style.top = sessionStorage.getItem('offsetY') + 'px'
+
+			document.querySelector('body').addEventListener('mousemove', (e) => {
+				let card = document.querySelector('.card')
+				sessionStorage.setItem('offsetX', e.offsetX)
+				sessionStorage.setItem('offsetY', e.offsetY)
+				card.style.left = e.offsetX + 'px'
+				card.style.top = e.offsetY + 'px'
+			})
+
+			const images = ['img1', 'img2', 'img3', 'img4', 'img5']
+			let img = document.querySelector('.background')
+			img.src = `images/${randomElement(images)}.jpg`
+
+			//select random element in array
+			function randomElement(array) {
+				return array[Math.floor(Math.random() * array.length)]
+			}
+		</script>
+	</body>
+</html>
